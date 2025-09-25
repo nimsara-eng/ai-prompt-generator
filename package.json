@@ -1,14 +1,11 @@
 {
   "name": "ai-prompt-generator",
   "version": "1.0.0",
-  "main": "server.mjs",
   "type": "module",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "echo 'Serverless function, no need to run manually'"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "openai": "^4.0.0",
-    "cors": "^2.8.5"
+    "openai": "^4.0.0"
   }
 }

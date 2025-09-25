@@ -1,14 +1,37 @@
-# AI Prompt Generator Backend
+# AI Prompt Generator
 
-A Node.js backend that generates detailed prompts across categories (wallpapers, videos, apps, websites, ChatGPT, short stories, etc.).
+This is a backend service that generates detailed prompts for:
 
-## Endpoints
-- GET `/` → health check
-- POST `/generate` → generate a prompt
-  - Body: `{ "category": "website", "keyword": "minimalist portfolio" }`
+- Wallpaper
+- Video
+- App
+- Website
+- ChatGPT
+- Short stories, etc.
 
-## Run locally
-```bash
-npm install
-npm start
+## API Endpoint
 
+`POST /api/generate`
+
+- Body (JSON):
+
+```json
+{
+  "category": "video",
+  "keyword": "motivational anime intro"
+}
+```
+
+- Response (JSON):
+
+```json
+{
+  "prompt": "Generated detailed prompt..."
+}
+```
+
+## Deployment
+
+1. Push this repo to GitHub
+2. Import repo to Vercel
+3. Set environment variable `OPENAI_API_KEY` with your key
