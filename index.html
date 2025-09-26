@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>AI Prompt Generator</title>
-	<meta name="description" content="Professional AI Prompt Generator - create high-quality prompts for wallpaper, video, apps, websites, ChatGPT and more." />
+	<title>Promptify AI</title>
+	<meta name="description" content="Promptify AI - Create your next masterpiece. Generate high-quality prompts for wallpaper, video, apps, websites, ChatGPT and more." />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 font-[Inter] min-h-screen">
 	<header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-zinc-900/60">
 		<div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
-			<h1 class="text-xl sm:text-2xl font-semibold tracking-tight">AI Prompt Generator</h1>
+			<h1 class="text-xl sm:text-2xl font-semibold tracking-tight">Promptify AI</h1>
 			<button id="themeToggle" class="relative inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
 				<span class="i-sun hidden md:inline">Light</span>
 				<span class="i-moon md:inline">Dark</span>
@@ -25,7 +25,8 @@
 	<main class="max-w-3xl mx-auto px-4 py-8">
 		<section class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-950/50 shadow-sm">
 			<div class="p-6 sm:p-8">
-				<!-- Controls row 1: Category & Detail -->
+				<h2 class="text-lg font-semibold mb-2">Create your next masterpiece</h2>
+				<!-- Controls row 1: Category & Complexity -->
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 					<div>
 						<label for="category" class="block text-sm font-medium mb-2">Category</label>
@@ -39,7 +40,7 @@
 						</select>
 					</div>
 					<div>
-						<label for="detail" class="block text-sm font-medium mb-2">Detail Level</label>
+						<label for="detail" class="block text-sm font-medium mb-2">Complexity</label>
 						<select id="detail" class="w-full rounded-lg border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
 							<option value="Small">Small</option>
 							<option value="Medium" selected>Medium</option>
@@ -50,16 +51,30 @@
 
 				<!-- Description textarea -->
 				<div class="mt-5">
-					<label for="description" class="block text-sm font-medium mb-2">Describe your goal or idea</label>
-					<textarea id="description" rows="5" placeholder="e.g., I want a minimalist portfolio website for a freelance designer, with a clean hero, case studies, and a contact form."
+					<label for="description" class="block text-sm font-medium mb-2">Description</label>
+					<textarea id="description" rows="4" placeholder="Describe your idea or goal..."
+						class="w-full rounded-lg border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+				</div>
+
+				<!-- Optional: Style -->
+				<div class="mt-5">
+					<label for="style" class="block text-sm font-medium mb-2">Style (Optional)</label>
+					<input id="style" type="text" placeholder="e.g., minimalist, cinematic, whimsical, cyberpunk"
+						class="w-full rounded-lg border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+				</div>
+
+				<!-- Optional: Additional Requirements -->
+				<div class="mt-5">
+					<label for="requirements" class="block text-sm font-medium mb-2">Additional Requirements (Optional)</label>
+					<textarea id="requirements" rows="3" placeholder="Any constraints, platforms, tone, target audience, languages, etc."
 						class="w-full rounded-lg border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
 				</div>
 
 				<!-- Action buttons -->
 				<div class="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
 					<button id="generateBtn" class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M2.94 6.34a2 2 0 0 1 2.72-.74l2.54 1.46A2 2 0 0 0 10 7.34l3.7-2.14a2 2 0 1 1 2 3.46l-3.7 2.13a2 2 0 0 0-1 1.73v4.28a2 2 0 1 1-4 0v-4.28l-2.54-1.46a2 2 0 0 1-.74-2.72Z"/></svg>
-						Generate
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M2.94 6.34a2 2 0 0 1 2.72-.74l2.54 1.46A2 2 0 0 0 10 7.34l3.7-2.14a2 2 0 1 1 2 3.46l-3.7 2.13a2 2 0 0 0-1 1.73v4.28a2 2 0 1 1-4 0v-4.28l-2.54-1.46a2  2 0 0 1-.74-2.72Z"/></svg>
+						Generate Prompt
 					</button>
 					<button id="randomBtn" class="inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 px-5 py-2.5 text-sm font-medium transition-colors">
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M14.59 7.41 16 6l4 4-4 4-1.41-1.41L16.17 11H14a4 4 0 0 0-3.2 1.6l-1.06 1.41A6 6 0 0 1 4 16H2v-2h2a4 4 0 0 0 3.2-1.6l1.06-1.41A6 6 0 0 1 14 8h2.17l-1.58-1.59Z"/></svg>
@@ -78,33 +93,26 @@
 					</div>
 
 					<article id="output" class="min-h-[180px] whitespace-pre-wrap rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-4 py-4 text-sm leading-6">
-						<span class="text-zinc-500">Your generated prompt will appear here. Select a category, set the detail level, optionally describe your idea, then click Generate or Random Prompt.</span>
+						<span class="text-zinc-500">Your generated prompt will appear here. Select a category and complexity, optionally add style and additional requirements, then click Generate or Random Prompt.</span>
 					</article>
 					<p id="errorMsg" class="mt-3 text-sm text-red-600 hidden"></p>
 				</div>
 			</div>
 		</section>
 
-		<!-- Social links -->
+		<!-- Social links provided -->
 		<section class="max-w-3xl mx-auto px-4 mt-8">
-			<div class="flex items-center justify-center gap-4 text-sm">
-				<a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm6.5-.25a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"/></svg>
-					Instagram
-				</a>
-				<a href="https://www.zedge.net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16a2 2 0 0 1 2 2v3l-6 3 6 3v3a2 2 0 0 1-2 2H4l8-8L4 3Z"/></svg>
-					Zedge
-				</a>
-				<a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M21.94 4.66c.3-1.17-.9-2.1-1.94-1.53L3.5 12.05c-.78.42-.67 1.61.18 1.87l3.88 1.2c.84.26 1.75.08 2.44-.47l6.82-5.39c.22-.18.5.12.31.33l-4.92 5.38c-.64.7-.53 1.8.23 2.37l4.02 3c.89.66 2.16.2 2.42-.87l2.06-8.17 1.1-4.84Z"/></svg>
-					Telegram
-				</a>
+			<div class="flex flex-wrap items-center justify-center gap-3 text-sm">
+				<a href="https://www.instagram.com/dark_wallpaper01/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">Instagram</a>
+				<a href="https://www.threads.com/@dark_wallpaper01" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">Threads</a>
+				<a href="https://www.zedge.net/profiles/bbee177d-e365-46c4-9608-142ddcf80b5b" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">Zedge (AnimaX Boy)</a>
+				<a href="https://www.zedge.net/profiles/fb8ca4b1-3b09-44a7-9985-288a978e26fa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">Zedge (MasterX)</a>
+				<a href="https://t.me/+xDylFOV6NuEwMGJl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">Telegram</a>
 			</div>
 		</section>
 
 		<footer class="max-w-3xl mx-auto px-2 text-center text-xs text-zinc-500 mt-8">
-			<p>Built with Tailwind CSS • Works great on mobile and desktop • Dark mode supported</p>
+			<p>© 2025 Promptify AI. All rights reserved.</p>
 		</footer>
 	</main>
 

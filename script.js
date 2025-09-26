@@ -1,10 +1,12 @@
 // Backend API endpoint (Vercel)
-const API_URL = "https://ai-prompt-generator-gk965ksj5-nimsara-engs-projects.vercel.app/api/generate";
+const API_URL = "https://ai-prompt-generator-git-main-nimsara-engs-projects.vercel.app/api/generate";
 
 // Elements
 const categoryEl = document.getElementById("category");
 const detailEl = document.getElementById("detail");
 const descriptionEl = document.getElementById("description");
+const styleEl = document.getElementById("style");
+const reqEl = document.getElementById("requirements");
 const generateBtn = document.getElementById("generateBtn");
 const randomBtn = document.getElementById("randomBtn");
 const copyBtn = document.getElementById("copyBtn");
@@ -54,10 +56,16 @@ function clearError() {
 }
 
 async function callApi(payload) {
+	// Use form-encoded to avoid CORS preflight from localhost
+	const form = new URLSearchParams();
+	Object.entries(payload).forEach(([key, value]) => {
+		if (value !== undefined && value !== null) form.append(key, String(value));
+	});
+
 	const res = await fetch(API_URL, {
 		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(payload),
+		headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+		body: form.toString(),
 	});
 	if (!res.ok) {
 		const text = await res.text().catch(() => "");
@@ -70,18 +78,29 @@ async function callApi(payload) {
 	return data.prompt;
 }
 
+function buildCombinedDescription() {
+	const base = descriptionEl.value.trim();
+	const style = styleEl.value.trim();
+	const req = reqEl.value.trim();
+	let combined = base;
+	if (style) combined += (combined ? "\n\n" : "") + `Style: ${style}`;
+	if (req) combined += (combined ? "\n\n" : "") + `Additional Requirements: ${req}`;
+	return combined;
+}
+
 async function handleGenerate() {
 	clearError();
 	const category = categoryEl.value;
 	const detail = detailEl.value;
-	const description = descriptionEl.value.trim();
-	if (!description) {
+	const combinedDesc = buildCombinedDescription();
+	if (!combinedDesc) {
 		showError("Please enter a description, or use Random Prompt.");
 		return;
 	}
 	setLoading(true);
 	try {
-		const promptText = await callApi({ category, description, detail });
+		// Map to original backend contract: use `keyword` instead of `description`
+		const promptText = await callApi({ category, keyword: combinedDesc, detail });
 		outputEl.textContent = promptText;
 	} catch (err) {
 		showError(err?.message || "Something went wrong. Please try again.");
@@ -96,6 +115,7 @@ async function handleRandom() {
 	const detail = detailEl.value;
 	setLoading(true);
 	try {
+		// For random flow, send a flag and rely on server-side defaulting
 		const promptText = await callApi({ category, random: true, detail });
 		outputEl.textContent = promptText;
 	} catch (err) {
