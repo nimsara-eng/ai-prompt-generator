@@ -1,0 +1,18 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## **1. Project Rules**
+
+These are **specific to this AI Prompt Generator project**. They override user rules if needed and guide Cursor for this app. Examples:
+
+* **API endpoint:** Always use `https://ai-prompt-generator-git-main-nimsara-engs-projects.vercel.app/api/generate`
+* **Frontend elements:** Must include dropdown for category, input for keyword, generate button, display area for prompt.
+* **Extra features:** Add “copy to clipboard” button and dark mode toggle.
+* **Output format:** Separate HTML, JS, and CSS files.
+* **UI quality:** Professional, modern, minimalistic style.
+
+
+
+

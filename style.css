@@ -1,0 +1,16 @@
+/**********************
+ Minimal custom CSS
+***********************/
+:root {
+	scroll-behavior: smooth;
+}
+
+html, body {
+	transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Improve focus outlines for accessibility */
+:focus-visible {
+	outline: 2px solid #4f46e5; /* indigo-600 */
+	outline-offset: 2px;
+} 
