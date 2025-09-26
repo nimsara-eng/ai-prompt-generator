@@ -1,0 +1,11 @@
+{
+  "name": "ai-prompt-generator",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "echo 'Serverless function, no need to run manually'"
+  },
+  "dependencies": {
+    "openai": "^4.0.0"
+  }
+}
