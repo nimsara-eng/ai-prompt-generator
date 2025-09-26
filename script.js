@@ -1,5 +1,5 @@
-// Backend API endpoint (Vercel)
-const API_URL = "https://ai-prompt-generator-git-main-nimsara-engs-projects.vercel.app/api/generate";
+// Backend API endpoint (proxied via Vercel rewrite)
+const API_URL = "/api/generate";
 
 // Elements
 const categoryEl = document.getElementById("category");
@@ -56,16 +56,10 @@ function clearError() {
 }
 
 async function callApi(payload) {
-	// Use form-encoded to avoid CORS preflight from localhost
-	const form = new URLSearchParams();
-	Object.entries(payload).forEach(([key, value]) => {
-		if (value !== undefined && value !== null) form.append(key, String(value));
-	});
-
 	const res = await fetch(API_URL, {
 		method: "POST",
-		headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-		body: form.toString(),
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(payload),
 	});
 	if (!res.ok) {
 		const text = await res.text().catch(() => "");

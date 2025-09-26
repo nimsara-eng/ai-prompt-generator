@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/generate",
+      "destination": "https://ai-prompt-generator-git-main-nimsara-engs-projects.vercel.app/api/generate"
+    }
+  ]
+} 
